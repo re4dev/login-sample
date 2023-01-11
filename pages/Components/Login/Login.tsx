@@ -51,7 +51,7 @@ const Login = () => {
             <form>
               <Input labelPlaceholder="Username" css={{ w: "250px" }} ref={userData.userName} />
               <Spacer y={1.3} />
-              <Input.Password labelPlaceholder="Password" ref={userData.userPassword}/>
+              <Input.Password labelPlaceholder="Password" css={{ w: "250px" }} ref={userData.userPassword}/>
               <Spacer y={1} />
               {isLoggedIn()
                 ? <Button shadow color="error" auto css={{ w: "150px" }} onClick={() => clearToken()}>Logout</Button>
