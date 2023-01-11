@@ -9,6 +9,8 @@ const Login = () => {
     shallow
   )
   const setToken = useTokenStore((s) => s.setToken);
+  const clearToken = useTokenStore((s) => s.clearToken);
+  const isLoggedIn = useTokenStore((s) => s.isLoggedIn);
   const mailRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -23,9 +25,10 @@ const Login = () => {
                 <Spacer y={1.3} />
                 <Input.Password labelPlaceholder="Password" />
                 <Spacer y={1} />
-                <Button shadow color="primary" auto css={{ w: "150px"}} onClick={() => setToken(mailRef.current?.value)}>
-                    Login
-                </Button>
+                {isLoggedIn()
+                  ? <Button shadow color="error" auto css={{ w: "150px"}} onClick={() => clearToken()}>Logout</Button>
+                  : <Button shadow color="primary" auto css={{ w: "150px"}} onClick={() => setToken(mailRef.current?.value)}>Login</Button>
+                }
                 <Text>{token}</Text>
             </form>
           </Card.Body>
