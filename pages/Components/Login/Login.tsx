@@ -24,11 +24,10 @@ const Login = () => {
   const [message, setMessage] = useState<string>("");
 
 
-  
+
   const url: string = process.env.NEXT_PUBLIC_API_LINK_FOR_LOGIN;
 
   function login() {
-    console.log(userData.userName.current.value)
     fetch(url,
       {
         method: "POST",
@@ -41,11 +40,14 @@ const Login = () => {
         })
       })
       .then((response) => response.json())
-      .then((data) => { 
-        console.log(data)
+      .then((data) => {
         setToken(data.token)
         setUserId(data.userId)
+      }).catch((error) => {
+        console.error('Error:', error);
         setMessage(error.message);
+      }
+      )
   }
 
 
