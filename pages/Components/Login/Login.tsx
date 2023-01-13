@@ -28,7 +28,7 @@ const Login = () => {
   const url: string = process.env.NEXT_PUBLIC_API_LINK_FOR_LOGIN;
 
   function login() {
-    fetch(url,
+    fetch("/api/login",
       {
         method: "POST",
         headers: {
