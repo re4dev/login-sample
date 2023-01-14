@@ -53,7 +53,7 @@ const Login = () => {
 
   return (
     <Grid.Container justify="center">
-      <Grid xs={4}>
+      <Grid sm={6} md={4}>
         <Card>
           <Card.Body css={{ padding: "$15" }}>
             {isLoggedIn()
