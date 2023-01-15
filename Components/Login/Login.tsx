@@ -1,7 +1,7 @@
 import { Button, Card, Grid, Input, Spacer, Text } from '@nextui-org/react'
 import React, { useRef, useState } from 'react'
 import { shallow } from 'zustand/shallow'
-import { useTokenStore } from '../../../store'
+import { useTokenStore } from '../../store'
 
 const Login = () => {
   const { userId, isLoggedIn, setToken, setUserId, clearToken } = useTokenStore(
