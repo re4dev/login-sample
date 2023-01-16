@@ -45,11 +45,14 @@ const Login = () => {
       })
       .then((response) => response.json())
       .then((data) => {
-        setToken(data.token)
-        setUserId(data.userId)
+        if(data.error){
+          setMessage(data.error);
+        }else{
+          setToken(data.token)
+          setUserId(data.userId)
+        }
       }).catch((error) => {
-        console.error('Error:', error);
-        setMessage(error.message);
+        console.error('Error:', error);       
       }
       )
   }
@@ -67,10 +70,10 @@ const Login = () => {
         <Card>
           <Card.Body css={{ padding: "$15" }}>
             {isLoggedIn()
-              ?<><Text h2 color='red'>Hello {userData.userName.current.value}</Text><Spacer y={0.3} /><Text>User-ID: {userId}</Text><Spacer y={0.3} /><Button shadow color="error" auto css={{ w: "150px" }} onClick={() => { clearToken(); setMessage(""); }}>Logout</Button></>
+              ? <><Text h2 color='red'>Hello {userData.userName.current.value}</Text><Spacer y={0.3} /><Text>User-ID: {userId}</Text><Spacer y={0.3} /><Button shadow color="error" auto css={{ w: "150px" }} onClick={() => { clearToken(); setMessage(""); }}>Logout</Button></>
               : <><form onSubmit={login}><Text h2>Login</Text><Spacer y={1} /><Input labelPlaceholder="Username" css={{ w: "250px" }} ref={userData.userName} /><Spacer y={1.5} /><Input.Password labelPlaceholder="Password" css={{ w: "250px" }} ref={userData.userPassword} /><Spacer y={1} /><Button shadow color="primary" auto css={{ w: "150px" }} type="submit">Login</Button></form></>
             }
-            {message && !isLoggedIn() ? <Text>{message}</Text> : null}
+            {message && !isLoggedIn() ? <><Spacer y={0.5} /><Text color='error'>{message}</Text></> : null}
           </Card.Body>
         </Card>
       </Grid>

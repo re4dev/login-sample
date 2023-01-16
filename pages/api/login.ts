@@ -35,8 +35,8 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       userId: user.userId,
     });
   } else {
-    res.status(204).json({
-      error: "wrong username or password"
+    res.status(403).json({
+      error: "Wrong username or password"
     });
   }
 }
