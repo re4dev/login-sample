@@ -30,7 +30,7 @@ const Login = () => {
   function login(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    fetch("/api/login",
+    fetch(url,
       {
         method: "POST",
         headers: {
